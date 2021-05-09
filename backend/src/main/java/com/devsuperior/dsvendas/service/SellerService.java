@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.devsuperior.dsvendas.dto.SellerDTO;
@@ -16,7 +17,7 @@ public class SellerService {
 	@Autowired
 	private SellerRepository repository;
 	
-	public List<SellerDTO> findAll() {
+	public List<SellerDTO> findAll(Pageable pageable) {
 		List<Seller> result = repository.findAll();
 		return result.stream().map(x -> new SellerDTO(x)).collect(Collectors.toList());
 	}
